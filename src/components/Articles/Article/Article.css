@@ -1,0 +1,21 @@
+.Article:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.7);
+}
+
+.card-columns {
+  @include media-breakpoint-only(lg) {
+    column-count: 4;
+  }
+  @include media-breakpoint-only(xl) {
+    column-count: 5;
+  }
+}
+
+.publishedAt {
+  text-align: right;
+  font-size: 12px;
+}
+
+.author {
+  font-size: 10px;
+}
