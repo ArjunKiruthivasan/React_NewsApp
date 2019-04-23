@@ -18,31 +18,16 @@ class NavBar extends Component {
   }
   render() {
     return (
-      <nav
-        className="navbar navbar-expand-lg
+      <div>
+        <nav
+          className="navbar navbar-expand-lg
         navbar-dark bg-dark fixed-top"
-      >
-        <span className="navbar-brand">
-          <i className="far fa-newspaper" /> News Viewer
-        </span>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
         >
-          <span className="navbar-toggler-icon" />
-        </button>
-        <div
-          className="collapse navbar-collapse justify-content-between"
-          id="navbarSupportedContent"
-        >
-          <Search />
-        </div>
-      </nav>
+          <span className="btn btn-dark">
+            <i className="far fa-newspaper" /> News Viewer
+          </span>
+        </nav>
+      </div>
     );
   }
 }

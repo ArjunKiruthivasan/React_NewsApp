@@ -47,13 +47,15 @@ class Search extends Component {
         this.setState(
           { articles: res.data.articles, loadingcheck: true },
           () => {
-            
             if (localStorage.getItem("backupdata") === true) {
               // init variable/set default variable for item
               console.log(" backupdata");
               console.log(localStorage.getItem("backupdata"));
             }
-            localStorage.setItem("backupdata", JSON.stringify(this.state.articles));
+            localStorage.setItem(
+              "backupdata",
+              JSON.stringify(this.state.articles)
+            );
             localStorage.setItem("forCountry", this.state.forCountry);
             localStorage.setItem("forCategory", this.state.forCategory);
             localStorage.setItem("toquery", this.state.toquery);
@@ -167,60 +169,58 @@ class Search extends Component {
         {value => {
           const { dispatch } = value;
           return (
-            <>
-              <div className="navbar-nav">
-                <form
-                  className="form-inline"
-                  onSubmit={this.findArticle.bind(this, dispatch)}
-                >
-                  <div className="form-row">
-                    <div className="col">
-                      <select
-                        className="form-control"
-                        name="CountryValue"
-                        value={this.state.CountryValue}
-                        onChange={this.handleCountryDropdownChange}
-                      >
-                        {Country.map(o => (
-                          <option key={o.value} value={o.value}>
-                            {o.name}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                    <div className="col">
-                      <select
-                        className="form-control"
-                        name="CategoryValue"
-                        value={this.setState.CategoryValue}
-                        onChange={this.handleCategoryDropdownChange}
-                      >
-                        {Category.map(o => (
-                          <option key={o.value} value={o.value}>
-                            {o.name}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
+            <div className="container">
+              <form onSubmit={this.findArticle.bind(this, dispatch)}>
+                <div className="form-row align-items-center">
+                  <div className="col-sm-3 my-1">
+                    <select
+                      className="form-control"
+                      name="CountryValue"
+                      value={this.state.CountryValue}
+                      onChange={this.handleCountryDropdownChange}
+                    >
+                      {Country.map(o => (
+                        <option key={o.value} value={o.value}>
+                          {o.name}
+                        </option>
+                      ))}
+                    </select>
                   </div>
-                  <div className="row">
-                    <div className="col">
-                      <input
-                        type="text"
-                        className="form-control"
-                        placeholder="Search"
-                        name="toquery"
-                        value={this.state.toquery}
-                        onChange={this.onChange}
-                      />
-                      <button className="btn btn-success" type="submit">
-                        Get Articles
-                      </button>
-                    </div>
+                  <div className="col-sm-3 my-1">
+                    <select
+                      className="form-control"
+                      name="CategoryValue"
+                      value={this.setState.CategoryValue}
+                      onChange={this.handleCategoryDropdownChange}
+                    >
+                      {Category.map(o => (
+                        <option key={o.value} value={o.value}>
+                          {o.name}
+                        </option>
+                      ))}
+                    </select>
                   </div>
-                </form>
-              </div>
-            </>
+                </div>
+                <div className="form-row align-items-center">
+                  <div className="col-sm-3 my-1">
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="Search"
+                      name="toquery"
+                      style={{"width" : "100%"}}
+                      value={this.state.toquery}
+                      onChange={this.onChange}
+                    />
+                  </div>
+                  <div className="col-sm-3 my-1">
+                    <button className="btn btn-success form-control" style={{"width" : "100%"}} type="submit">
+                      Get Articles
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
           );
         }}
       </Consumer>
